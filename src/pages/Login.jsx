@@ -15,7 +15,7 @@ const Login = () => {
       // Attempt Cognito sign in
       const user = await signIn(username, password);
       console.log('Sign in success:', user);
-      navigate('/confirmation');
+      navigate('/dashboard');
     } catch (err) {
       console.error('Error signing in:', err);
       setError(err.message || 'Error signing in');
@@ -66,6 +66,13 @@ const Login = () => {
           <button style={styles.button}>
             Login
           </button>
+          <button
+          type="button"
+          style={{ ...styles.button, backgroundColor: '#24292e' }}
+          onClick={() => window.location.href = 'https://eu-north-1xcjzhaykp.auth.eu-north-1.amazoncognito.com/login?client_id=71vtap1s8k5576n6v1jvn11c3f&response_type=token&scope=email+openid+phone&redirect_uri=http%3A%2F%2Flocalhost%3A5173%2Fdashboard'}
+        >
+          Login with Hosted UI
+        </button>
           <p style={styles.signupText}>
             Don&apos;t have an account? <Link to="/signup" style={styles.signupLink}>Sign up</Link>
           </p>
